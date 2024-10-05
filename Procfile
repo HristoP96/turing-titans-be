@@ -1,0 +1,1 @@
+web hypercorn -b 0.0.0.0:$PORT run:app --keep-alive 600 --read-timeout 600

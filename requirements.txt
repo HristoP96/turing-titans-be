@@ -1,0 +1,12 @@
+quart
+requests
+python-dotenv
+httpx
+asyncio
+hypercorn
+apscheduler
+pytest
+pytest-asyncio
+pydub
+quart-cors
+pillow
