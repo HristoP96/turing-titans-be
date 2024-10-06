@@ -3,9 +3,9 @@ import json
 import  time
 from .response_parser import parse_response
 
-api_key = "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"
+test = "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"
 
-client = openai.Client(api_key=api_key)
+client = openai.Client(api_key=test)
 assistant_id="asst_0Js3FxXqKkhUlMpjikhe09el"
 
 def select_option(option, thread_id):
