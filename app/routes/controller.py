@@ -1,24 +1,18 @@
 from quart import Blueprint, request, jsonify
 from quart_cors import cors
+from ..openais.gpt import start_game, select_option
 
-
-audio_blueprint = Blueprint('audio', __name__)
+audio_blueprint = Blueprint('game', __name__)
 audio_blueprint = cors(audio_blueprint, allow_origin="*", allow_methods=['GET', 'POST', 'OPTIONS'])
 
-@audio_blueprint.route('/upload', methods=['POST'])
-async def upload_chunk():
-    return {'success': 'true'}, 200
-    
-@audio_blueprint.route('/complete-upload', methods=['POST'])
-async def complete_file_upload():
-    return {'success': 'true'}, 200
+@audio_blueprint.route('/select-option', methods=['POST'])
+async def option():
+    form = await request.form
+    thread_id = form['thread_id']
+    option = form['option']
 
+    return jsonify(select_option(option, thread_id)), 200
 
-@audio_blueprint.route('/under-conversion', methods=['GET'])
-def get_under_conversion():
-    return {'success': 'true'}, 200
-
-
-@audio_blueprint.route('/files-info', methods=['GET'])
-def get_files_info():
-    return {'success': 'true'}, 200
+@audio_blueprint.route('/start-game', methods=['POST'])
+def start():
+    return jsonify(start_game()), 200

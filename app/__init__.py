@@ -7,7 +7,6 @@ def create_app():
     app = Quart(__name__, static_folder="../static", static_url_path="/static/static")
 
     app.register_blueprint(audio_blueprint)
-
     @app.route("/", defaults={"path": ""})
     @app.route("/<path:path>")
     async def catch_all(path):

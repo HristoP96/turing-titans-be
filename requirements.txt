@@ -10,3 +10,4 @@ pytest-asyncio
 pydub
 quart-cors
 pillow
+openai
