@@ -3,7 +3,7 @@ import json
 import  time
 from .response_parser import parse_response
 
-api_key = "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"
+api_key = "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"
 
 client = openai.Client(api_key=api_key)
 assistant_id="asst_0Js3FxXqKkhUlMpjikhe09el"
