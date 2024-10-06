@@ -20,10 +20,10 @@ def extract_data(text, open_tag, close_tag):
 def parse_response(text):
     data = {}
 
-    stage_header_pattern = r'<stageheader\d+>(.*?)<\/stageheader\d+>'
+    stage_header_pattern = r'<stageheader(\d*)>(.*?)<\/stageheader(\d*)>'
     stage_headers = re.findall(stage_header_pattern, text, re.DOTALL)
     # Concatenate all stage headers into a single string
-    stage_headers_content = ' '.join(content.strip() for content in stage_headers)
+    stage_headers_content = ' '.join(content.strip() for num1, content, num2 in stage_headers)
     data['stage_header'] = stage_headers_content
     for key, (open_tag, close_tag) in tags.items():
         open_tag_pattern = re.escape(open_tag)
